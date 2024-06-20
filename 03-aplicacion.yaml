@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: unir
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: jarapeto/act02-mi-app-node-mongo:01
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_USUARIO
+          value: "usuariobd"
+        - name: DB_CONTRASENA
+          value: "clavebd.123"
+        - name: DB_HOST
+          value: "mongo-service"
+        - name: DB_PUERTO
+          value: "27017"
+        - name: DB_NOMBRE
+          value: "admin"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+  namespace: unir
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: myapp
+

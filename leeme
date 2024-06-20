@@ -1,0 +1,15 @@
+aws eks update-kubeconfig --name EKS-PRACTICA-UNIR --region us-east-1
+kubectl config get-clusters
+
+172.31.0.0/16
+
+aws s3 lt
+
+kubectl create namespace practica-unir
+
+
+
+-- Crear la clave de mongo
+
+kubectl create secret generic mongodb-secret --from-literal=mongodb-password='12345678' -n unir
+

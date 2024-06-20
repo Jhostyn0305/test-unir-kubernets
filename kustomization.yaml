@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: unir
+
+resources:
+  # - 00-volumen.yaml
+  - 01-secret.yaml
+  - 02-mongodb.yaml
+  - 03-aplicacion.yaml  
+  #- 005-ingressController.yaml
+  
